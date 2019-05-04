@@ -1,0 +1,58 @@
+AWSTemplateFormatVersion : '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Resources:
+  UserCRUDFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: index.userHandler
+      Runtime: nodejs8.10
+      Events:
+        UserPostAPI:
+          Type: Api
+          Properties:
+            Path: /user
+            Method: POST
+        UsersGetAPI:
+          Type: Api
+          Properties:
+            Path: /user
+            Method: GET
+        UserGetAPI:
+          Type: Api
+          Properties:
+            Path: /user/{userId}
+            Method: ANY
+        
+        
+      Policies:
+        - Version: '2012-10-17'
+          Statement:
+            - Effect: Allow
+              Action:
+                - 'dynamodb:DeleteItem'
+                - 'dynamodb:GetItem'
+                - 'dynamodb:PutItem'
+                - 'dynamodb:UpdateItem'
+              Resource:
+                'Fn::Join':
+                  - ''
+                  - - 'arn:aws:dynamodb:'
+                    - Ref: 'AWS::Region'
+                    - ':'
+                    - Ref: 'AWS::AccountId'
+                    - ':table/UsersTable'
+
+
+  UsersTable:
+    Type: 'AWS::DynamoDB::Table'
+    Properties:
+      TableName: UsersTable
+      AttributeDefinitions:
+        - AttributeName: userId
+          AttributeType: S
+      KeySchema:
+        - AttributeName: userId
+          KeyType: HASH
+      ProvisionedThroughput:
+        ReadCapacityUnits: 5
+        WriteCapacityUnits: 5  
