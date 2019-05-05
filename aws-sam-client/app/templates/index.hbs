@@ -1,0 +1,25 @@
+<div class="page-title">
+  <h3>Users</h3>
+</div>
+<div class="user-list">
+  <div>
+    <div class="row">
+      <div class="col-sm user-title">
+        Name
+      </div>
+      <div class="col-sm user-title">
+        Address
+      </div>
+    </div>
+  </div>
+  {{#each this.model as |user|}}
+    <div class="row">
+      <div class="col-sm user-item">
+        {{user.firstName}} {{user.lastName}}
+      </div>
+      <div class="col-sm user-item">
+        {{user.address}}
+      </div>
+    </div>
+  {{/each}}
+</div>
