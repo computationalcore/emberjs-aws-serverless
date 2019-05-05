@@ -17,6 +17,9 @@ exports.userHandler = function(event, context, callback){
 			case 'POST':
 				saveItem(event, callback);
 				break;
+			case 'OPTIONS':
+				sendResponse(200, {}, callback);
+				break;
 			case 'PUT':
 				updateItem(event, callback);
 				break;
@@ -26,12 +29,12 @@ exports.userHandler = function(event, context, callback){
 };
 
 function saveItem(event, callback) {
-	const item = JSON.parse(event.body);
+	const item = JSON.parse(event.body).user;
 
 	item.id = uuidv1();
 
 	databaseManager.saveItem(item).then(response => {
-		sendResponse(200, {"report": item.id}, callback);
+		sendResponse(200, response, callback);
 	}, (reject) =>{
 		sendResponse(400, reject, callback);
 	});

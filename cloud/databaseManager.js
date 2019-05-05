@@ -28,7 +28,7 @@ module.exports.saveItem = item => {
     .put(params)
     .promise()
     .then((result) => {
-      return item;
+      return {'user': item};
     }, (error) => {
       return error;
     });

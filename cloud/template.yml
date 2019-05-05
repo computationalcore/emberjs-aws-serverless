@@ -12,6 +12,11 @@ Resources:
           Properties:
             Path: /users
             Method: POST
+        UserOptionsAPI:
+          Type: Api
+          Properties:
+            Path: /users
+            Method: OPTIONS
         UsersGetAPI:
           Type: Api
           Properties:
