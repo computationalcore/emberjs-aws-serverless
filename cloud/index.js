@@ -58,7 +58,8 @@ function getItem(event, callback) {
 			if(response)
 				sendResponse(200, response, callback);
 			else
-			sendResponse(404, "No data available", callback);
+				sendResponse(200, {'users' : []}, callback);
+				//sendResponse(404, "No data available", callback);
 	
 		},(reject) =>{
 			sendResponse(400, reject, callback);
