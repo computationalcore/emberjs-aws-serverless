@@ -79,7 +79,7 @@ function deleteItem(event, callback) {
 function updateItem(event, callback) {
 	const itemId = event.pathParameters.id;
 
-	const body = JSON.parse(event.body);
+	const body = JSON.parse(event.body).user;
 	
 	databaseManager.updateItem(itemId, body).then(response => {
 		sendResponse(200, response, callback);

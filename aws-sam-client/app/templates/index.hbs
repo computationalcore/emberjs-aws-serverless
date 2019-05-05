@@ -13,6 +13,9 @@
       <div class="col-sm user-title">
         Address
       </div>
+      <div class="col-sm user-title">
+        Edit
+      </div>
     </div>
   </div>
   {{#each this.model as |user|}}
@@ -22,6 +25,9 @@
       </div>
       <div class="col-sm user-item">
         {{user.address}}
+      </div>
+      <div class="col-sm user-item">
+        {{#link-to "users.edit" user.id class="btn btn-info"}}Edit{{/link-to}}
       </div>
     </div>
   {{/each}}
