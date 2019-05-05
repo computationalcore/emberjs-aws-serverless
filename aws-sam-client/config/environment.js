@@ -7,7 +7,7 @@ module.exports = function(environment) {
     rootURL: '/',
     locationType: 'auto',
     webServiceURL: 'http://localhost:3000',
-    //webServiceURL: 'https://t0tk9eky9e.execute-api.us-east-1.amazonaws.com/dev',
+    //webServiceURL: 'https://hdh6izbes6.execute-api.us-east-1.amazonaws.com/Prod',
     contentSecurityPolicy: {
       'connect-src': "'self' wss://*.amazonaws.com https://*.amazonaws.com"
     },
