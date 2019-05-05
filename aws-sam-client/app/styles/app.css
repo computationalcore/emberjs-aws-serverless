@@ -39,7 +39,7 @@
 
 /* Absolute Center Spinner */
 .loading-text {
-    z-index: 999;
+    z-index: 9999;
     position: absolute;
     top: calc(50% + 60px);
     left: 50%;
@@ -54,7 +54,7 @@
 
 .loading {
     position: fixed;
-    z-index: 999;
+    z-index: 9999;
     height: 2em;
     width: 2em;
     overflow: visible;
