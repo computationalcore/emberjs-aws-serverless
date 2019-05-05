@@ -37,7 +37,7 @@ module.exports.saveItem = item => {
 module.exports.getItem = itemId => {
   const params = {
     Key: {
-      userId: itemId
+      id: itemId
     },
     TableName: TABLE_NAME
   };
@@ -46,7 +46,7 @@ module.exports.getItem = itemId => {
     .get(params)
     .promise()
     .then((result) => {
-      return result.Item;
+      return {'user': result.Item};
     }, (error) => {
       return error;
     });
@@ -61,7 +61,7 @@ module.exports.getItems = () => {
     .scan(params)
     .promise()
     .then((result) => {
-      return result.Items;
+      return {'users': result.Items};
     }, (error) => {
       return error;
     });
@@ -71,7 +71,7 @@ module.exports.getItems = () => {
 module.exports.deleteItem = itemId => {
   const params = {
     Key: {
-      userId: itemId
+      id: itemId
     },
     TableName: TABLE_NAME
   };
@@ -104,9 +104,9 @@ module.exports.updateItem = (itemId, item) => {
   const params = {
     TableName: TABLE_NAME,
     Key: {
-      userId: itemId
+      id: itemId
     },
-    ConditionExpression: 'attribute_exists(userId)',
+    ConditionExpression: 'attribute_exists(id)',
     UpdateExpression: updateexp,
     ExpressionAttributeValues: expattvalues,
     ReturnValues: 'ALL_NEW'

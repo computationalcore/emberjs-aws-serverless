@@ -28,10 +28,10 @@ exports.userHandler = function(event, context, callback){
 function saveItem(event, callback) {
 	const item = JSON.parse(event.body);
 
-	item.userId = uuidv1();
+	item.id = uuidv1();
 
 	databaseManager.saveItem(item).then(response => {
-		sendResponse(200, item.userId, callback);
+		sendResponse(200, {"report": item.id}, callback);
 	}, (reject) =>{
 		sendResponse(400, reject, callback);
 	});
@@ -39,12 +39,12 @@ function saveItem(event, callback) {
 
 function getItem(event, callback) {
 	if (event.pathParameters) {
-		const itemId = event.pathParameters.userId;
+		const itemId = event.pathParameters.id;
 		databaseManager.getItem(itemId).then(response => {
 			if(response)
 				sendResponse(200, response, callback);
 			else
-			sendResponse(404, "Please pass a valid userId", callback);
+			sendResponse(404, "Please provide a valid user id", callback);
 	
 		},(reject) =>{
 			sendResponse(400, reject, callback);
@@ -55,7 +55,7 @@ function getItem(event, callback) {
 			if(response)
 				sendResponse(200, response, callback);
 			else
-			sendResponse(404, "Please pass a valid userId", callback);
+			sendResponse(404, "No data available", callback);
 	
 		},(reject) =>{
 			sendResponse(400, reject, callback);
@@ -64,7 +64,7 @@ function getItem(event, callback) {
 }
 
 function deleteItem(event, callback) {
-	const itemId = event.pathParameters.userId;
+	const itemId = event.pathParameters.id;
 
 	databaseManager.deleteItem(itemId).then(response => {
 		sendResponse(200, 'DELETE ITEM', callback);
@@ -74,7 +74,7 @@ function deleteItem(event, callback) {
 }
 
 function updateItem(event, callback) {
-	const itemId = event.pathParameters.userId;
+	const itemId = event.pathParameters.id;
 
 	const body = JSON.parse(event.body);
 	
@@ -87,6 +87,11 @@ function updateItem(event, callback) {
 
 function sendResponse(statusCode, message, callback) {
 	const response = {
+		headers: {
+			"Access-Control-Allow-Headers": "Content-Type,X-Amz-Date,Authorization,X-Api-Key",
+			"Access-Control-Allow-Methods": "POST, GET, PUT, DELETE",
+			"Access-Control-Allow-Origin": "*"
+		},
 		statusCode: statusCode,
 		body: JSON.stringify(message)
 	};

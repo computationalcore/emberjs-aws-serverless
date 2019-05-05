@@ -10,17 +10,17 @@ Resources:
         UserPostAPI:
           Type: Api
           Properties:
-            Path: /user
+            Path: /users
             Method: POST
         UsersGetAPI:
           Type: Api
           Properties:
-            Path: /user
+            Path: /users
             Method: GET
         UserGetAPI:
           Type: Api
           Properties:
-            Path: /user/{userId}
+            Path: /users/{id}
             Method: ANY
         
         
@@ -48,10 +48,10 @@ Resources:
     Properties:
       TableName: UsersTable
       AttributeDefinitions:
-        - AttributeName: userId
+        - AttributeName: id
           AttributeType: S
       KeySchema:
-        - AttributeName: userId
+        - AttributeName: id
           KeyType: HASH
       ProvisionedThroughput:
         ReadCapacityUnits: 5
