@@ -16,6 +16,9 @@
       <div class="col-sm user-title">
         Edit
       </div>
+      <div class="col-sm user-title">
+        Delete
+      </div>
     </div>
   </div>
   {{#each this.model as |user|}}
@@ -29,6 +32,23 @@
       <div class="col-sm user-item">
         {{#link-to "users.edit" user.id class="btn btn-info"}}Edit{{/link-to}}
       </div>
+      <div class="col-sm user-item">
+        {{#bs-button class="btn btn-danger" onClick=(action "showModal" user)}}Delete{{/bs-button}}
+      </div>
     </div>
   {{/each}}
+  {{#bs-modal open=this.modal onSubmit=(action "deleteUser" this.selectedUser.id) onHidden=(action "hideModal") as |modal|}}
+    {{#modal.header}}
+      <h4 class="modal-title">
+        Delete confirmation
+      </h4>
+    {{/modal.header}}
+    {{#modal.body}}
+      <div>Do you really want to remove <b>{{this.selectedUser.firstName}} {{this.selectedUser.lastName}}</b>?</div>
+    {{/modal.body}}
+    {{#modal.footer}}
+      {{#bs-button onClick=(action "hideModal")}}Cancel{{/bs-button}}
+      {{#bs-button type="danger" onClick=(action modal.submit)}}Delete{{/bs-button}}
+    {{/modal.footer}}
+  {{/bs-modal}}
 </div>
