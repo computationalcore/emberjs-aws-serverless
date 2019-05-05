@@ -1,3 +1,30 @@
+
+/* Page Loader */
+.loading-page {
+  position: fixed;
+  left: calc(50% - 100px);
+  top: calc(50% - 112px);
+  z-index: 1000;
+}
+.spinner-grow {
+  color: #311D40;
+  width: 10rem;
+  height: 10rem;
+}
+
+.spinner-text {
+  color: #311D40;
+  margin-left: 35px;
+}
+
+.loading-holder {
+  background: transparent;
+  width: 100%;
+  height: 100%;
+}
+
+
+/* Page Style */
 .page-title {
     text-align: center;
     margin-top: 5px;
