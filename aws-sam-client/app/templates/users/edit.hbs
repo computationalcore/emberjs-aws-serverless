@@ -1,3 +1,7 @@
+{{request-loader
+  visible=this.loading
+  text=this.loadingText
+}}
 <h1 class="page-title">Edit Report - {{this.model.firstName}} {{this.model.lastName}}</h1>
 
 <form {{action "editUser" this.model.id on="submit"}} class="user-form">
