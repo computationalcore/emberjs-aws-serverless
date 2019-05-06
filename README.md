@@ -7,11 +7,11 @@ This application allows to create, update, edit, delete and list users, with fir
  - API Gateway for REST API
  - Lambda and DynamoDB as a Backend
  - CloudFormation and SAM for Infrastructure management
- - S3 to serve the WebSite 
+ - S3 to serve the WebSite
 
 The application utilizes Ember.js methodology by abstracting API Gateway communication into adapters, allowing you to write controller code utilizing ember models.
 
-This application run locally (in a docker lambda and docker DynamoDB) and on the AWS Cloud. 
+This application run locally (in a docker lambda and docker DynamoDB) and on the AWS Cloud.
 
 ## Prerequisites
 
@@ -35,13 +35,7 @@ You will need the following things properly installed on your computer.
 
 #### Cloud (Local)
 
-Create a specific Docker network beforehand named the lambda-local-network (rename it if you want): 
-
-```bash
-docker network create lambda-local-network
-```
-
-Create a specific Docker network beforehand named the lambda-local-network (rename it if you want): 
+Create a specific Docker network beforehand named the lambda-local-network (rename it if you want):
 
 ```bash
 docker network create lambda-local-network
@@ -128,7 +122,7 @@ sam deploy \
     --region us-east-1
 ```
 
-Go to AWS Lambda panel API Gateway to check your URL. 
+Go to AWS Lambda panel API Gateway to check your URL.
 
 #### Client
 
@@ -138,7 +132,7 @@ Yet in cloud folder create the client template named ember-serverless-hosting (y
 aws cloudformation describe-stacks --stack-name ember-serverless-hosting
 ```
 
-Note the `OutputValue` value for the `CodeBucketName` S3 bucket, this will be the bucket we use to deploy our Lambda code to. 
+Note the `OutputValue` value for the `CodeBucketName` S3 bucket, this will be the bucket we use to deploy our Lambda code to.
 
 Go to client folder install dependencies and build the project
 
