@@ -50,7 +50,7 @@ docker run -d -p 8000:8000 --network=lambda-local-network --name dynamodb-local 
 Create Users table
 
 ```bash
-aws dynamodb create-table --table-name UsersTable --attribute-definitions AttributeName=id,AttributeType=S --key-schema AttributeName=id,KeyType=HASH --provisioned-throughput ReadCapacityUnits=5,WriteCapacityUnits=5 --endpoint-url http://0.0.0.0:8000
+aws dynamodb create-table --table-name UsersTable --attribute-definitions AttributeName=id,AttributeType=S --key-schema AttributeName=id,KeyType=HASH --provisioned-throughput ReadCapacityUnits=5,WriteCapacityUnits=5 --endpoint-url http://127.0.0.1:8000
 ```
 
 Enter cloud folder and start the SAM locally
