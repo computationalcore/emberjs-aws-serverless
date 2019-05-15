@@ -1,4 +1,4 @@
-# aws-sam-local-with-dynamodb-freelancer
+# emberjs-aws-serverless
 
 This application allows to create, update, edit, delete and list users, with first, last name and address fields.
 
@@ -11,7 +11,7 @@ This application allows to create, update, edit, delete and list users, with fir
 
 The application utilizes Ember.js methodology by abstracting API Gateway communication into adapters, allowing you to write controller code utilizing ember models.
 
-This application run locally (in a docker lambda and docker DynamoDB) and on the AWS Cloud.
+This application can run 100% locally (in a docker lambda and docker DynamoDB) and 100% on the AWS Cloud.
 
 ## Prerequisites
 
@@ -157,3 +157,7 @@ Once synced you can visit the URL for your S3 bucket using the `OutputValue` fro
 ## Authors
 
 Vin Busquet - [https://github.com/computationalcore](https://github.com/computationalcore)
+
+## License
+This project is licensed under the MIT License - see the LICENSE file for details
+
