@@ -13,27 +13,33 @@ The application utilizes Ember.js methodology by abstracting API Gateway communi
 
 This application can run 100% locally (in a docker lambda and docker DynamoDB) and 100% on the AWS Cloud.
 
+![](https://github.com/computationalcore/emberjs-aws-serverless/raw/assets/screenshot.png)
+
+## Demo
+
+[S3 deployed app](http://ember-serverless-hosting-websitebucket-1aiy7930tbubg.s3-website-us-east-1.amazonaws.com)
+
 ## Prerequisites
 
 You will need the following things properly installed on your computer.
 
-* [Git](https://git-scm.com/)
-* [Node.js](https://nodejs.org/) (with NPM)
-* [Docker](https://www.docker.com/get-started)
-* [AWS CLI](https://aws.amazon.com/cli)
-* [SAM CLI](https://docs.aws.amazon.com/pt_br/serverless-application-model/latest/developerguide/serverless-sam-cli-install.html)
-* [Ember CLI](https://ember-cli.com/)
+- [Git](https://git-scm.com/)
+- [Node.js](https://nodejs.org/) (with NPM)
+- [Docker](https://www.docker.com/get-started)
+- [AWS CLI](https://aws.amazon.com/cli)
+- [SAM CLI](https://docs.aws.amazon.com/pt_br/serverless-application-model/latest/developerguide/serverless-sam-cli-install.html)
+- [Ember CLI](https://ember-cli.com/)
 
 ## Installation
 
-* `git clone https://github.com/computationalcore/aws-sam-local-with-dynamodb-freelancer`
-* `cd aws-sam-local-with-dynamodb-freelancer`
+- `git clone https://github.com/computationalcore/emberjs-aws-serverless`
+- `cd emberjs-aws-serverless`
 
 --------------------
 
 ### Run Locally
 
-#### Cloud (Local)
+#### Backend (Local)
 
 Create a specific Docker network beforehand named the lambda-local-network (rename it if you want):
 
@@ -104,6 +110,13 @@ Create an S3 bucket in the location where you want to save the packaged code. If
 aws s3 mb s3://bucketname
 ```
 
+Create Users table
+
+```bash
+aws dynamodb create-table --table-name UsersTable --attribute-definitions AttributeName=id,AttributeType=S --key-schema AttributeName=id,KeyType=HASH --provisioned-throughput ReadCapacityUnits=5,WriteCapacityUnits=5
+```
+
+
 Create the Lambda function deployment package by running the following package AWS SAM CLI command at the command prompt.
 
 ```bash
@@ -160,4 +173,3 @@ Vin Busquet - [https://github.com/computationalcore](https://github.com/computat
 
 ## License
 This project is licensed under the MIT License - see the LICENSE file for details
-
