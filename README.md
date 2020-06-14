@@ -15,10 +15,6 @@ This application can run 100% locally (in a docker lambda and docker DynamoDB) a
 
 ![](https://github.com/computationalcore/emberjs-aws-serverless/raw/assets/screenshot.png)
 
-## Demo
-
-[S3 deployed app](http://ember-serverless-hosting-websitebucket-1aiy7930tbubg.s3-website-us-east-1.amazonaws.com)
-
 ## Prerequisites
 
 You will need the following things properly installed on your computer.
